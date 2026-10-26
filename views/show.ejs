@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show users</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Email</th>
+        </tr>
+        <%for (user of users){ %>
+          <tr>
+            <td><%=user.id %></td>
+            <td><%=user.username %></td>
+            <td><%=user.email %></td>
+            <td>
+            <form action ="/show/<%=user.id %>/edit" method="GET">
+               <button type="submit">Update</button>
+            </form>
+            </td>
+            <td>
+                <form action="/user/<%=user.id%>?_method=DELETE" method="POST">
+                    <button type="submit">Delete Post</button>
+                </form>
+            </td>
+          </tr>
+        <%} %>
+    </table>
+    <br>
+    <hr>
+    <form action="/user" method="GET">
+        <button type="submit">Add new User</button>
+    </form>
+</body>
+</html>
+
